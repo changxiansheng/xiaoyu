@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小仙女</title>
+    <link href="css/demo.css" rel="stylesheet">
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script>
+       // var flakeColor = "#FF00FF";
+        function getColor() {
+            var r = Math.floor(Math.random() * 256);
+            var g = Math.floor(Math.random() * 256);
+            var b = Math.floor(Math.random() * 256);
+            return "rgb(" + r + "," + g + "," + b + ")";
+       }
+        var newOn = 100;
+        var flake = $("<div></div>").css("position", "absolute").html("❄");
+        $(function () {
+            var dwidth = $(document).width();
+            var dheight = $(document).height();
+            setInterval(function () {
+                var startLeft = Math.random() * dwidth;
+                var endLeft = Math.random() * dwidth;
+                var flakeSize = 5 + 50 * Math.random();
+                var durationTime = 4000 + 7000 * Math.random();
+                var startOpacity = 0.7 + 0.3 * Math.random();
+                var endOpacity = 0.4 + 0.3 * Math.random();
+                flake.clone().appendTo($("body")).css({
+                    "left": startLeft,
+                    "font-size": flakeSize,
+                    //"color": flakeColor,
+                    "color":getColor(),
+                    "top": "-55px",
+                    "opacity": startOpacity
+                }).animate({
+                    "top": dheight,
+                    "left": endLeft,
+                    "opacity": endOpacity
+                }, durationTime, function () {
+                    $(this).remove();
+                });
+            }, newOn);
+        });
+    </script>
+</head>
+<body>
+    <embed src="mp3/FMG%20-%20%E4%B8%80%E6%AC%A1%E5%B0%B1%E5%A5%BD%EF%BC%88%E5%A4%8F%E6%B4%9B%E7%89%B9%E7%83%A6%E6%81%BC%E7%94%B5%E5%BD%B1%E6%8F%92%E6%9B%B2%EF%BC%89.mp3" hidden="true" autostart="true" loop="true">
+   <div "position: absolute;z-index:-1;width: 100%;height: 100%;">
+		<img src="img/%E5%B0%8F%E9%92%B0.jpg"width="100%"height="100%"/>	
+ </div>
+</body>
+</html>
